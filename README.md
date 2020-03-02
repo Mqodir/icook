@@ -9,7 +9,7 @@
 ## Подборки рецептов
 ![main_page](http://icookserver.000webhostapp.com/screenshots/compilation.png)
 ## Избранное
-![main_page](http://icookserver.000webhostapp.com/screenshots/compilation.png)
+![main_page](http://icookserver.000webhostapp.com/screenshots/fav.png)
 Вы сможете выбирать понравившиеся Вам рецепты и сохранять их в Избранные. 
 ## Подробно о рецепте
 ![main_page](http://icookserver.000webhostapp.com/screenshots/item_view.png)
