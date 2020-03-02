@@ -1,0 +1,12 @@
+{
+    "id": "icook",
+    "display": { 
+        "name": { 
+            "rus": "iCook", 
+            "eng": "iCook"
+        },
+
+        "icon": "resources/icon512.png"
+    },
+    "application": { }
+}
