@@ -17,7 +17,7 @@
 ## QR Код для сопряжения с мобильным приложением
 ![main_page](http://icookserver.000webhostapp.com/screenshots/qr_code_to_connect.png)
 Для более удобного использования я создал мобильное приложение. Чтобы соеденить приложения вы должны отсканировать QR код через мобильное приложение iook.
-Mобильное приложение доступно в Google Play по ссылке: http://play.google.com/store/apps/details?id=ru.mqsoft.icook
+Mобильное приложение доступно в Google Play по ссылке: http://play.google.com/store/apps/details?id=ru.mqsoft.icook или https://github.com/Mqodir/icook/blob/master/iCook.apk
 ## Поиск
 ![main_page](http://icookserver.000webhostapp.com/screenshots/search.png)
 ## Рецепты
