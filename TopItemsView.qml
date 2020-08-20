@@ -34,7 +34,7 @@ import "TopItemDelegate.qml";
                                                     kkal: catalogItem["list_kkal"] + "к.",
                                                     porsiya: catalogItem["list_porsiya"],
                                                     time: catalogItem["list_time"]+"м.",
-                                                    poster: "http://icookserver.000webhostapp.com/imgs/items/"+catalogItem["list_id"]+"_circle.png" } );
+                                                    poster: "https://icookserver.online/imgs/items/"+catalogItem["list_id"]+"_circle.png" } );
                         });
 
                         topItemsView.loading = false;

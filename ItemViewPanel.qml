@@ -236,7 +236,7 @@
                                 log("unhandled status", request.status);
                         }
 
-                        request.open("GET", "http://icookserver.000webhostapp.com/addShopList.php?token="+token+"&item_id="+itemViewPanel.selitem, true);
+                        request.open("GET", "https://icookserver.online/addShopList.php?token="+token+"&item_id="+itemViewPanel.selitem, true);
                         request.send();
                     }
 
@@ -300,7 +300,7 @@
                                 log("unhandled status", request.status);
                         }
 
-                        request.open("GET", "http://icookserver.000webhostapp.com/addFav.php?token="+token+"&item_id="+itemViewPanel.selitem, true);
+                        request.open("GET", "https://icookserver.online/addFav.php?token="+token+"&item_id="+itemViewPanel.selitem, true);
                         request.send();
                     }
 
@@ -409,7 +409,7 @@
 
                     if(request.responseText != "0 results"){
                         var itemMoreData = JSON.parse(request.responseText);
-                        itemViewTitleImg.source = "http://icookserver.000webhostapp.com/imgs/items/"+item_id+"_rec_round.png"
+                        itemViewTitleImg.source = "https://icookserver.online/imgs/items/"+item_id+"_rec_round.png"
                         
                         if (itemMoreData["list_title"].length < 45) {
                             itemViewTitle.text = itemMoreData["list_title"];
@@ -448,7 +448,7 @@
                     log("unhandled status", request.status);
             }
 
-            request.open("GET", "http://icookserver.000webhostapp.com/getItem.php?id=" + item_id, true);
+            request.open("GET", "https://icookserver.online/getItem.php?id=" + item_id, true);
             request.send();
 
             itemViewDescription.setFocus();
