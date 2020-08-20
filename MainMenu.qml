@@ -144,7 +144,7 @@ Item{
                 mainMenu.selIndex = 2;
                 itemsList.visible = false;
                 compilationList.visible = true;
-                compilationListItems.loadData("https://icookserver.000webhostapp.com/getCompilation.php");
+                compilationListItems.loadData("https://icookserver.online/getCompilation.php");
 
             }
         }
@@ -216,7 +216,7 @@ Item{
         color: activeFocus && mainMenu.selIndex != 4 ? constants.colors["active"] : mainMenu.selIndex == 4 ? constants.colors["selected"] : constants.colors["inactive"];
         
         Image{
-            source: mainMenu.selIndex == 4 ? "apps/icook/resources/menu/settings_sel.png" : "apps/icook/resources/menu/settings.png";
+            source: mainMenu.selIndex == 4 ? "apps/icook/resources/menu/qr_code_sel.png" : "apps/icook/resources/menu/qr_code.png";
             anchors.centerIn: parent;
             anchors.leftMargin: -12;
             fillMode: PreserveAspectFit;
