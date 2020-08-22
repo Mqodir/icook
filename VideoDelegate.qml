@@ -63,6 +63,6 @@ import "js/constants.js" as constants;
                         opacity: videoDelegate.activeFocus ? 1 : 0;
                         Behavior on opacity { animation: Animation { duration: 150; easingType: Linear; } }
                         height: 100;
-                        source: "apps/testvp/resources/ic_play.png";
+                        source: "apps/icook/resources/ic_play.png";
                     }
     }
