@@ -19,6 +19,9 @@ this.poster = {"width"  : 172,
 this.itemTop = {"width"  : 220,
                "height" : 240};
 
+this.itemVideo = {"width"  : 220,
+               "height" : 220};
+
 
 this.borderSearch = {"active"  : 1,
                "inactive" : 0};
