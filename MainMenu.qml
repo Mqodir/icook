@@ -44,19 +44,18 @@ Item{
         }
 
         onKeyPressed: {
-            error(key);
             if (key == "Down") {
                     btnMenu2.setFocus();
             }
             if (key == "Up") {
-                    btnMenu6.setFocus();
+                    btnMenu5.setFocus();
             }
             if (key == "Right" || key == "Select") {
                     topItemsView.setFocus();
                     compilationList.visible = false;
                     itemsList.visible = false;
+                    videoList.visible = false;
                     mainMenu.selIndex = 0;
-                    itemsList.visible = false;
             }
         }
 
@@ -90,7 +89,6 @@ Item{
         }
 
         onKeyPressed: {
-            error(key);
             if (key == "Up") {
                     btnMenu.setFocus();
 
@@ -101,6 +99,7 @@ Item{
             if (key == "Right" || key == "Select") {
                     mainMenu.selIndex = 1;
                     compilationList.visible = false;
+                    videoList.visible = false;
                     icook.showItems("topAll", "none", "Лучшие рецепты");
             }
         }
@@ -132,7 +131,6 @@ Item{
         }
 
         onKeyPressed: {
-            error(key);
             if (key == "Up") {
                     btnMenu2.setFocus();
             }
@@ -143,6 +141,7 @@ Item{
 
                 mainMenu.selIndex = 2;
                 itemsList.visible = false;
+                videoList.visible = false;
                 compilationList.visible = true;
                 compilationListItems.loadData("https://icookserver.online/getCompilation.php");
 
@@ -178,17 +177,60 @@ Item{
         }
 
         onKeyPressed: {
-            error(key);
             if (key == "Up") {
                     btnMenu3.setFocus();
+            }
+            if (key == "Down") {
+                    btnMenu6.setFocus();
+            }
+            if (key == "Right" || key == "Select") {
+                    mainMenu.selIndex = 3;
+                    compilationList.visible = false;
+                    videoList.visible = false;
+                    icook.showFavs();
+            }
+        }
+
+        Behavior on color { animation: Animation { duration: 300; easingType: Linear; } }
+    }
+
+
+    ActivePanel {
+        id: btnMenu6;
+        height: 70;
+        width: 110;
+        focus: true;
+        radius: 20;
+        anchors.top: parent.top;
+        anchors.left: parent.left;
+        anchors.topMargin: 420;
+        anchors.leftMargin: -40;
+
+        borderWidth: 2;
+        borderColor: activeFocus ? "#444444" : "#ff6f00";
+        Behavior on borderColor { animation: Animation { duration: 150; easingType: Linear; } }
+
+        color: activeFocus && mainMenu.selIndex != 5 ? constants.colors["active"] : mainMenu.selIndex == 5 ? constants.colors["selected"] : constants.colors["inactive"];
+        
+        Image{
+            source: mainMenu.selIndex == 5 ? "apps/icook/resources/menu/video_sel.png" : "apps/icook/resources/menu/video.png";
+            anchors.centerIn: parent;
+            anchors.leftMargin: -12;
+            fillMode: PreserveAspectFit;
+        }
+
+        onKeyPressed: {
+            if (key == "Up") {
+                    btnMenu4.setFocus();
             }
             if (key == "Down") {
                     btnMenu5.setFocus();
             }
             if (key == "Right" || key == "Select") {
-                    mainMenu.selIndex = 3;
+                    mainMenu.selIndex = 5;
                     compilationList.visible = false;
-                    icook.showFavs();
+                    itemsList.visible = false;
+                    icook.showVideos();
             }
         }
 
@@ -223,9 +265,8 @@ Item{
         }
 
         onKeyPressed: {
-            error(key);
             if (key == "Up") {
-                    btnMenu4.setFocus();
+                    btnMenu6.setFocus();
             }
             if (key == "Down") {
                     btnMenu.setFocus();

@@ -3,6 +3,7 @@ import "js/constants.js" as constants;
 import "CategoryView.qml";
 import "TopItemsView.qml";
 import "ItemsView.qml";
+import "VideosView.qml";
 import "StepsView.qml";
 import "CompilationView.qml";
 import "SearchBar.qml";
@@ -10,6 +11,7 @@ import "MainMenu.qml";
 import "ItemViewPanel.qml";
 import "DayMenuView.qml";
 import "Toast.qml";
+import "IcookPlayer.qml";
 
 Application {
     id: icook;
@@ -403,6 +405,75 @@ Application {
                 }
             }
         }
+
+
+
+
+        Rectangle{
+            id: videoList;
+            anchors.top: searchBar.bottom;
+            anchors.left: parent.left;
+            anchors.right: parent.right;
+            anchors.bottom: parent.bottom;
+            anchors.leftMargin: 20;
+            anchors.rightMargin: 10;
+            anchors.topMargin: 8;
+            anchors.bottomMargin: 20;
+            color: "#ffd8bd";
+            visible: false;
+            BodyText {
+                anchors.top: parent.top;
+                anchors.left: parent.left;
+                anchors.topMargin: 2;
+                anchors.leftMargin: 15;
+                color: "#555555";
+                text: "Видео рецепты:";
+            }
+
+            BodyText{
+                anchors.centerIn: parent;
+                text: "Загрузка…";
+                color: "#444444";
+                visible: mainListVideos.loading;
+            }
+
+            VideosView{
+                id: mainListVideos;
+                anchors.top: parent.top;
+                anchors.bottom: parent.bottom;
+                anchors.left: parent.left;
+                anchors.right: parent.right;
+                anchors.topMargin: 35;
+
+                onBackPressed: {
+                    videoList.visible = false;
+                    log(itemsList.p);
+                    if(itemsList.p == "cat"){
+                        categotyItems.setFocus();
+                    }else if(itemsList.p == "compilation"){
+                        compilationListItems.setFocus();
+                    }else{
+                        topItemsView.setFocus();
+                        mainMenu.selIndex = 0;
+                    }
+                }
+
+                onKeyPressed: {
+                    if (key == "Left") {
+                        mainMenu.setFocus();
+                    }
+                    if (key == "Right") {
+                        homePanel.lastSelected = "videoList";
+                        if (weekMenu.exist) {
+                            weekMenu.setFocus();
+                        }else{
+                            reloadMenu.setFocus();
+                        }
+                    }
+                }
+            }
+        }
+
 
         Rectangle{
             id: connectDialog;
@@ -1123,6 +1194,29 @@ Application {
         anchors.leftMargin: -40;
     }
 
+    Rectangle{
+        id: icookPlayerParent;
+        color: "#ffdabd";
+        anchors.top: parent.top;
+        visible: false;
+        anchors.left: parent.left;
+        anchors.bottom: parent.bottom;
+        anchors.right: parent.right;
+        anchors.bottomMargin: -30;
+        anchors.topMargin: -30;
+        anchors.rightMargin: -40;
+        anchors.leftMargin: -40;
+        showFrom: "playlist";
+
+        IcookPlayer{
+            id: icookPlayer;
+            anchors.top: parent.top;
+            anchors.left: parent.left;
+            anchors.bottom: parent.bottom;
+            anchors.right: parent.right;
+        }
+    }
+
     Toast{
         id: toast;
         anchors.bottom: parent.bottom;
@@ -1151,9 +1245,6 @@ Application {
         }
         topItemsView.loadData("https://icookserver.online/getRecomend.php");
         categoryView.loadData("https://icookserver.online/getCategory.php");
-        iviPlayer.setFocus();
-        iviPlayer.playVideoByURL("https://icookserver.online/videos/vid.mp4");
-        log("VideoPlay");
 
     }
 
@@ -1177,6 +1268,14 @@ Application {
         itemsList.p = "none";
         itemsListTitle.text = "Избранные:";
         mainListItems.loadData("https://icookserver.online/getFavs.php?token="+load("token"));
+    }
+
+
+
+    function showVideos(){
+        videoList.visible = true;
+        mainListVideos.loadData("https://icookserver.online/getVideos.php");
+        mainListVideos.setFocus();
     }
 
 
@@ -1270,6 +1369,8 @@ Application {
                                     itemsList.setFocus();
                                 }else if(homePanel.lastSelected == "compilationList"){
                                     compilationList.setFocus();
+                                }else if(homePanel.lastSelected == "videoList"){
+                                    videoList.setFocus();
                                 }else{
                                     topItemsView.setFocus();
                                 }
